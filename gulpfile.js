@@ -13,7 +13,8 @@ const DEBUG = process.env.NODE_ENV === 'debug';
 
 const dependencies = [
 	'react',
-	'react-dom'
+	'react-dom',
+	'moment'
 ];
 
 gulp.task('browserify-vendor',function() {
@@ -21,7 +22,7 @@ gulp.task('browserify-vendor',function() {
 			.require(dependencies)
 			.bundle()
 			.pipe(source('vendor.bundle.js'))
-			.pipe(gulpif(!DEBUG,streamify(uglify( {mangle:false}))))
+			//.pipe(gulpif(!DEBUG,streamify(uglify( {mangle:false}))))
 			.pipe(gulp.dest('public/js'));
 });
 
